@@ -5,9 +5,10 @@ import sys
 packages = [
     "libpython3.10-minimal",
     "libpython3.10-stdlib",
-    "python3.10",
-    "python3.10-minimal",
     "python3.10-distutils",
+    "python3.10-lib2to3",
+    "python3.10-minimal",
+    "python3.10",
 ]
 
 dist_dir = os.path.join(os.getcwd(), "dist")
