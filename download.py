@@ -1,4 +1,5 @@
 import os
+import platform
 import subprocess
 import sys
 
@@ -13,6 +14,20 @@ packages = [
 
 dist_dir = os.path.join(os.getcwd(), "dist")
 os.makedirs(dist_dir, exist_ok=True)
+
+if platform.machine() not in {"AMD64", "x86_64"}:
+    subprocess.run(
+        [
+            "docker",
+            "run",
+            "--rm",
+            "--privileged",
+            "multiarch/qemu-user-static",
+            "--reset",
+            "-p",
+            "yes",
+        ]
+    )
 
 subprocess.run(
     [
